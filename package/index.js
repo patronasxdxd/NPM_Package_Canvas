@@ -383,7 +383,7 @@ export function initialize() {
             const searchInput = document.getElementById('searchInput');
             searchInput.value = '';
     
-            file = currentImage;
+            let file = currentImage;
             const img = new Image();
     
             img.onload = () => {
@@ -479,7 +479,7 @@ export function initialize() {
             const searchInput = document.getElementById('searchInput');
             searchInput.value = '';
     
-            file = currentImage;
+            let file = currentImage;
             const img = new Image();
     
             img.onload = () => {
@@ -537,99 +537,15 @@ export function initialize() {
         }
     
     }
-    
-    
-    //Kept incase we want to add a image from folder
-    //
-    // const addItemImage = () => {
-    //     const fileInput = document.createElement('input');
-    //
-    //     fileInput.type = 'file';
-    //     fileInput.accept = 'image/*';
-    //
-    //     fileInput.addEventListener('change', (event) => {
-    //         const file = event.target.files[0];
-    //
-    //         if (!file) {
-    //             console.error('No file selected');
-    //             return;
-    //         }
-    //
-    //         if (!file.type.match('image.*')) {
-    //             console.error('Selected file is not an image');
-    //             return;
-    //         }
-    //
-    //         if (file.size > 10 * 1024 * 1024) {
-    //             console.error('Selected file is too large');
-    //             return;
-    //         }
-    //
-    //         const img = new Image();
-    //
-    //         img.onload = () => {
-    //             let maxWidth = 350;
-    //             let maxHeight = 500;
-    //             let width = img.width;
-    //             let height = img.height;
-    //             let resizeRatio = 1;
-    //
-    //             //resize
-    //             if (width > maxWidth || height > maxHeight) {
-    //                 if (width / maxWidth > height / maxHeight) {
-    //                     resizeRatio = maxWidth / width;
-    //                 } else {
-    //                     resizeRatio = maxHeight / height;
-    //                 }
-    //                 width *= resizeRatio;
-    //                 height *= resizeRatio;
-    //             }
-    //
-    //             // temporary canvas to resize and not affect old canvas
-    //             const canvas = document.createElement('canvas');
-    //             canvas.width = width;
-    //             canvas.height = height;
-    //             const ctx = canvas.getContext('2d');
-    //             ctx.drawImage(img, 0, 0, width, height);
-    //
-    //             // create a new image object from the canvas
-    //             const resizedImg = new Image();
-    //             resizedImg.onload = () => {
-    //                 itemsCanvas.push({
-    //                     type: 'image',
-    //                     element: resizedImg,
-    //                     x: 0,
-    //                     y: 0,
-    //                     width: resizedImg.width,
-    //                     height: resizedImg.height,
-    //                 });
-    //
-    //                 drawItems();
-    //
-    //                 //clear url object
-    //                 URL.revokeObjectURL(resizedImg.src);
-    //             };
-    //             resizedImg.src = canvas.toDataURL('image/jpeg');
-    //         };
-    //
-    //         img.onerror = () => {
-    //             console.error('Error loading image file');
-    //         };
-    //
-    //         img.src = URL.createObjectURL(file);
-    //     });
-    //
-    //     fileInput.click();
-    // };
+
     
     
     const SearchImage = () => {
     
         const searchInput = document.getElementById('searchInput');
-        API_URL = 'https://api.unsplash.com/'
-        // ACCESS_KEY = 'QEup5hDoLkPlqzdjvzOLK0G8LqXvcCfevBSUIfjxzJk'   //MY key but its 50 api calls per hour
-        ACCESS_KEY = 'NaHFk6fEWYCWjF10KF4L9EiplttQNKmTUu6rcLJ9uLc'
-        searchValue = searchInput.value;
+        const API_URL = 'https://api.unsplash.com/'
+        const ACCESS_KEY = 'NaHFk6fEWYCWjF10KF4L9EiplttQNKmTUu6rcLJ9uLc'
+        let searchValue = searchInput.value;
     
         fetch(`${API_URL}search/photos?page=1&query=${searchValue}&client_id=${ACCESS_KEY}`)
             .then(response => response.json())

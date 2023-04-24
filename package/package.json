@@ -4,7 +4,7 @@
   "description": "tools to create elements for a canvas",
   "main": "index.js",
   "files": [
-    "dist/canvas*edit-tools.js"
+    "dist/canvas-edit-tools.js"
   ],
   "scripts": {
     "build": "webpack --mode production"
