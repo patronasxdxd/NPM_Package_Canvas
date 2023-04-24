@@ -14,5 +14,12 @@
     "CAN"
   ],
   "author": "Gilles Zwijsen",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.21.4",
+    "@babel/preset-env": "^7.21.4",
+    "babel-loader": "^9.1.2",
+    "webpack": "^5.80.0",
+    "webpack-cli": "^5.0.2"
+  }
 }
