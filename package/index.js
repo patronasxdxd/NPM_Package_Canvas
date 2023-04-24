@@ -86,25 +86,17 @@ export function initialize() {
     
     
                     if (item.banner) {
-                        // ctx.fillStyle = item.color;
+                    
                         ctx.font = 'bold 36px Arial';
-                        // const textWidth = ctx.measureText(item.text).width;
-                        // const textHeight = 36; // line-height of 1.0
-    
-                        // ctx.fillRect(item.x, item.y, textWidth, textHeight);
-                        // ctx.fillStyle = '#fff';
+                
                         ctx.fillStyle = "white";
                         ctx.fillText(item.text, item.x, item.y + 30);
     
                     } else {
-                        // ctx.fillStyle = item.color;
+                        
                         ctx.font = 'bold 12px Arial';
                         ctx.fillStyle = "white";
-    
-                        // ctx.shadowOffsetX = 2;
-                        // ctx.shadowOffsetY = 2;
-                        // ctx.shadowBlur = 2;
-                        // ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+
     
                         const maxWidth = item.maxWidth; // get width from the user selected width
                         let words = item.text.split(' ');
