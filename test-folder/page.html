@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+ 
+    <script src="./node_modules/canvas-edit-tools/dist/canvas-edit-tools.js"></script>
+
+    <link href="npm.css" rel="stylesheet">
+</head>
+<body>
+
+<div id="contextMenu"></div>
+
+
+
+<div class="container">
+    <div class="left-side">
+        <div class="editor" id="editor"></div>
+    </div>
+
+    <div id="custom-dialog">
+        <textarea id="custom-input" rows="5"></textarea>
+        <button id="custom-accept">Accept</button>
+        <button id="custom-cancel">Cancel</button>
+    </div>
+
+
+    <div class="right-side">
+        <canvas height="790" id="myCanvas" width="1050"></canvas>
+    </div>
+
+
+</div>
+
+
+<footer>
+    <div class="toolbar">
+        <button id="undoBtn">Undo</button>
+        <button id="forwardBtn">Forward</button>
+        <button id="saveBtn">Save</button>
+        <button id="resetButton">Reset</button>
+<!--        <button id="tutorialButton">Show Tutorial</button>-->
+        <span id="display">Display:</span>
+        <button id="html">HTML</button>
+<!--        <button id="css">CSS</button>-->
+    </div>
+</footer>
+
+
+
+
+</body>
+
+    <script>
+        CanvasEditTools.initialize();
+      </script>
+
+</html>
