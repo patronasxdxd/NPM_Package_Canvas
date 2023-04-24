@@ -1,0 +1,18 @@
+{
+  "name": "canvas-edit-tools",
+  "version": "1.0.0",
+  "description": "tools to create elements for a canvas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "(https://github.com/patronasxdxd/NPM_Package_Canvas.git)"
+  },
+  "keywords": [
+    "CAN"
+  ],
+  "author": "Gilles Zwijsen",
+  "license": "ISC"
+}
