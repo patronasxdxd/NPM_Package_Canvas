@@ -1,10 +1,11 @@
 {
   "name": "canvas-edit-tools",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "tools to create elements for a canvas",
   "main": "index.js",
   "files": [
-    "dist/canvas-edit-tools.js"
+    "dist/canvas-edit-tools.js",
+    "style.css"
   ],
   "scripts": {
     "build": "webpack --mode production"
@@ -22,6 +23,8 @@
     "@babel/core": "^7.21.4",
     "@babel/preset-env": "^7.21.4",
     "babel-loader": "^9.1.2",
+    "css-loader": "^6.7.3",
+    "style-loader": "^3.3.2",
     "webpack": "^5.80.0",
     "webpack-cli": "^5.0.2"
   }

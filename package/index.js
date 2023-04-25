@@ -1,5 +1,10 @@
+import styles from './style.css';
+
 
 export function initialize() {
+
+    
+
     const canvas = document.getElementById('myCanvas');
 
 
@@ -720,7 +725,9 @@ export function initialize() {
         }
     
         const forwardButton = document.getElementById('forwardBtn')
-        forwardButton.addEventListener('click', forwardCanvas);
+        if (forwardButton){
+            forwardButton.addEventListener('click', forwardCanvas);
+        }
     
     
         const resetButton = document.getElementById("resetButton")
@@ -1133,6 +1140,7 @@ export function initialize() {
 
 const canvasEditTools = {
     initialize,
+
   };
   
   export default canvasEditTools;
