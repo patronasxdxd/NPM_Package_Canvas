@@ -60,12 +60,12 @@ import this:
 on bottom:
 
 ```
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <script src="./node_modules/canvas-edit-tools/dist/canvas-edit-tools.js"></script>
+</body>
+
+    <script>
+        CanvasEditTools.initialize();
+      </script>
+</html>c="./node_modules/canvas-edit-tools/dist/canvas-edit-tools.js"></script>
 </head>
 ```
 
