@@ -1115,21 +1115,16 @@ export function initialize() {
 
     function showPreview(itemPositions) {
 
-        if (preview === true){
-            location.reload()
-        }
-
-        const editor = document.getElementById("editor");
-        if (editor){
-            editor.style.display = 'none';
-        }
-
-        const canvas = document.getElementById("myCanvas");
-        if (canvas){
-            canvas.style.display = 'none';
-        }
-
         const toolbar = document.querySelector(".toolbar");
+        const body = document.querySelector("body");
+
+        if (body && toolbar) {
+            body.innerHTML = ""; // remove all contents of the body
+            body.appendChild(toolbar); // add the toolbar back to the body
+        }
+
+
+
         const saveBtn = document.querySelector("#saveBtn");
         const displaySpan = document.querySelector("#display");
 
@@ -1139,13 +1134,21 @@ export function initialize() {
 
         }
 
-        if (toolbar){
+        if (toolbar) {
             // Hide all buttons except for Save
             toolbar.childNodes.forEach((node) => {
                 if (node.nodeName === "BUTTON" && node !== saveBtn) {
                     node.style.display = "none";
                 }
             });
+
+            // Add CSS style to position the toolbar at the bottom of the screen
+            toolbar.style.position = "fixed";
+            toolbar.style.bottom = "0";
+            toolbar.style.left = "0";
+            toolbar.style.right = "0";
+            toolbar.style.display = "flex";
+            toolbar.style.justifyContent = "center";
         }
 
 
@@ -1154,6 +1157,9 @@ export function initialize() {
 
         if (saveBtn){
             saveBtn.textContent = "Go Back";
+            saveBtn.addEventListener("click", () => {
+                location.reload();
+            });
         }
 
 
@@ -1274,6 +1280,7 @@ export function initialize() {
                     }, 3000);
 
                 } else {
+
 
                     let width = (item.x / canvasWidth) * 100;
                     let height = (item.y / canvasHeight) * 100;

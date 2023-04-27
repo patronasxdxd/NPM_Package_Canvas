@@ -1,6 +1,6 @@
 {
   "name": "canvas-edit-tools",
-  "version": "1.1.5",
+  "version": "1.1.7",
   "description": "tools to create elements for a canvas",
   "main": "index.js",
   "files": [
