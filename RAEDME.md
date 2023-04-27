@@ -3,27 +3,35 @@
 
 Have you ever wanted to create a stunning canvas in HTML but found it difficult to add the right tools and features? Look no further, this package includes a range of useful features to help you build beautiful and functional canvases. From a context menu and footer to an editor and carousel, this package has everything you need to create engaging and interactive canvases that will impress your users. In this article, I'll introduce you to the key features of my package and show you how to use them to create stunning canvases. It's the perfect tool for building impressive and user-friendly canvases.
 
-steps::
+## Video
+
+Click the image to watch the video to view all features!
+
+[![Screenshot 2023-04-27 at 20 25 33](https://user-images.githubusercontent.com/105933422/234958459-791994ae-51c4-4886-9886-263d27d726a7.png)](https://youtu.be/enAGlWieTXg){:target="_blank"}
+
+# Setup
 
 ```
 terminal: npm i canvas-edit-tools
 ```
 
+# Tools
+
 There are 4 different elements you can import:
 
-1; a canvas
+### 1: a canvas
 
 ```
 <canvas height="790" id="myCanvas" width="1050"></canvas>
 ```
 
-2; a editor
+### 2: a editor
 
 ```
 <div class="editor" id="editor"></div>
 ```
 
-3; a footer
+### 3: a toolbar/footer
 
 
 ```
@@ -39,11 +47,13 @@ There are 4 different elements you can import:
 </footer>
 ```
 
-4; context menu
+### 4: context menu
 
 ```
 <div id="contextMenu"></div>
 ```
+
+## imports
 
 import this:
 
@@ -69,7 +79,7 @@ on bottom:
 </head>
 ```
 
-full code:
+## DEMO: full code
 
 ```
 
@@ -122,8 +132,4 @@ full code:
 
 
 
-## Video
 
-click the image to watch the video to view all features!
-
-[![Screenshot 2023-04-27 at 20 25 33](https://user-images.githubusercontent.com/105933422/234958459-791994ae-51c4-4886-9886-263d27d726a7.png)](https://youtu.be/enAGlWieTXg){:target="_blank"}
