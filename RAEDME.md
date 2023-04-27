@@ -90,7 +90,7 @@ on bottom:
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="./node_modules/canvas-edit-tools/dist/canvas-edit-tools.js"></script>
+    <script src="../node_modules/canvas-edit-tools/dist/canvas-edit-tools.js"></script>
 </head>
 <body>
 
