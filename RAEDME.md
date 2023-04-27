@@ -99,12 +99,6 @@ on bottom:
         <div class="editor" id="editor"></div>
     </div>
 
-    <div id="custom-dialog">
-        <textarea id="custom-input" rows="5"></textarea>
-        <button id="custom-accept">Accept</button>
-        <button id="custom-cancel">Cancel</button>
-    </div>
-
 
     <div class="right-side">
         <canvas height="790" id="myCanvas" width="1050"></canvas>
