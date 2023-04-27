@@ -298,8 +298,8 @@ export function initialize() {
         currentItem = null;
         drawItems();
     }
-    
-    
+
+
     const onSaveBtnClick = () => {
         const itemPositions = itemsCanvas.map(item => ({
             x: item.x,
@@ -310,35 +310,14 @@ export function initialize() {
             url: item.url,
             carousal: item.carousal
         }));
-    
+
         localStorage.setItem('itemPositions', JSON.stringify(itemPositions));
-    
-        const header = document.querySelector('meta[name="_csrf_header"]').content;
-        const token = document.querySelector('meta[name="_csrf"]').content;
-    
-        let title = prompt("Please enter a title:");
-        fetch('/api/addPage', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                [header]: token
-            },
-            body: JSON.stringify({
-                itemPositions: itemPositions,
-                title: title
-            })
-        }).then(response => {
-            if (!response.ok) {
-                throw new Error('Response not OK');
-            }
-            return response.json();
-        })
-            .then(data => {
-                window.location.href = `/page/template?id=${data}`;
-            })
-            .catch(error => {
-                console.error('There was a problem adding the page:', error);
-            });
+
+        // document.querySelector('body').style.display = 'none';
+        showPreview(JSON.stringify(itemPositions));
+
+
+
     }
     
     // add a text
@@ -537,8 +516,11 @@ export function initialize() {
 
     
     
-    const SearchImage = () => {
-    
+    const SearchImage = (event) => {
+
+        event.preventDefault(); // prevent form submission from appending "#" to URL
+
+
         const searchInput = document.getElementById('searchInput');
         const API_URL = 'https://api.unsplash.com/'
         const ACCESS_KEY = 'NaHFk6fEWYCWjF10KF4L9EiplttQNKmTUu6rcLJ9uLc'
@@ -1125,14 +1107,170 @@ export function initialize() {
     
     
     Init();
-    
-    
-    
-    
-    
-    
-    
 
+
+
+
+
+    function showPreview(itemPositions) {
+
+        const editor = document.getElementById("editor");
+        if (editor){
+            editor.style.display = 'none';
+        }
+
+
+
+        const canvas = document.getElementById("myCanvas");
+        if (canvas){
+            canvas.style.display = 'none';
+        }
+
+
+
+        const itemPositionsArray = JSON.parse(itemPositions);
+
+        let canvasHeight = 790;
+        let canvasWidth = 1050;
+
+// Calculate container dimensions based on canvas dimensions
+        let containerWidth, containerHeight;
+        if (canvasHeight > canvasWidth) {
+            containerHeight = 800;
+            containerWidth = (containerHeight / canvasHeight) * canvasWidth;
+            // calculate the width based on the aspect ratio of the canvas
+        } else {
+            containerWidth = 1050;
+            containerHeight = (containerWidth / canvasWidth) * canvasHeight;
+            // calculate the height based on the aspect ratio of the canvas
+        }
+
+        const container = document.createElement('div');
+        container.style.display = 'flex';
+        container.style.flexWrap = 'wrap';
+        container.style.width = containerWidth + 'px';
+        container.style.height = containerHeight + 'px';
+
+        for (let i = 0; i < itemPositionsArray.length; i++) {
+            const item = itemPositionsArray[i];
+
+
+            if ('text' in item) {
+                let width = (item.x / canvasWidth) * 100;
+                let height = (item.y / canvasHeight) * 100;
+
+                const div = document.createElement('div');
+                div.id = 'box';
+                div.style.position = 'absolute';
+                div.style.left = width + '%';
+                div.style.top = height + '%';
+                div.style.zIndex = i.toString()
+                div.innerText = item.text;
+
+                container.appendChild(div);
+            } else {
+
+
+                if ('carousal' in item) {
+
+                    let item1 = Object.assign({}, item);
+                    let item2 = Object.assign({}, item);
+                    let item3 = Object.assign({}, item);
+
+                    item2.url = 'https://popupsmart.com/encyclopedia/user/pages/75.uniform-resource-locator-url/url-image.png';
+                    item3.url = 'https://popupsmart.com/encyclopedia/user/pages/75.uniform-resource-locator-url/url-image.png';
+
+                    let images = [item1, item2, item3];
+                    let currentIndex = 0;
+
+                    let width1 = (item1.x / canvasWidth) * 100;
+                    let height1 = (item1.y / canvasHeight) * 100;
+
+                    let width2 = (item2.x / canvasWidth) * 100;
+                    let height2 = (item2.y / canvasHeight) * 100;
+
+                    let width3 = (item3.x / canvasWidth) * 100;
+                    let height3 = (item3.y / canvasHeight) * 100;
+
+                    let sizeFactor = Math.min(window.innerWidth / canvasWidth, window.innerHeight / canvasHeight);
+                    let Imagewidth = item1.imageW * sizeFactor;
+                    let Imageheight = item1.imageH * sizeFactor;
+
+
+                    const container = document.createElement('div');
+                    container.style.display = 'flex';
+                    container.style.justifyContent = 'center';
+                    container.style.alignItems = 'center';
+                    document.body.appendChild(container);
+
+                    const img1 = document.createElement('img');
+                    img1.id = 'image1';
+                    img1.style.position = 'absolute';
+                    img1.style.left = width1 + '%';
+                    img1.style.top = height1 + '%';
+                    img1.style.zIndex = '3';
+                    img1.src = item1.url;
+                    img1.width = Imagewidth;
+                    img1.height = Imageheight;
+                    container.appendChild(img1);
+
+                    const img2 = document.createElement('img');
+                    img2.id = 'image2';
+                    img2.style.position = 'absolute';
+                    img2.style.left = width1 * 1.2 + '%'
+                    img2.style.top = height1 * 1.1 + '%';
+                    img2.style.zIndex = '2';
+                    img2.src = item2.url;
+                    img2.width = Imagewidth;
+                    img2.height = Imageheight - Imageheight * 0.25;
+                    container.appendChild(img2);
+
+                    const img3 = document.createElement('img');
+                    img3.id = 'image3';
+                    img3.style.position = 'absolute';
+                    img3.style.left = width1 * 0.8 + '%'
+                    img3.style.top = height1 * 1.1 + '%';
+                    img3.style.zIndex = '1';
+                    img3.src = item3.url;
+                    img3.width = Imagewidth;
+                    img3.height = Imageheight - Imageheight * 0.25;
+                    container.appendChild(img3);
+
+                    setInterval(() => {
+                        currentIndex = (currentIndex + 1) % images.length;
+                        img1.src = images[currentIndex].url;
+                        img2.src = images[(currentIndex + 1) % images.length].url;
+                        img3.src = images[(currentIndex + 2) % images.length].url;
+                    }, 3000);
+
+                } else {
+
+
+                    console.log(item)
+
+                    let width = (item.x / canvasWidth) * 100;
+                    let height = (item.y / canvasHeight) * 100;
+
+                    let sizeFactor = Math.min(window.innerWidth / canvasWidth, window.innerHeight / canvasHeight);
+                    let Imagewidth = item.imageW * sizeFactor;
+                    let Imageheight = item.imageH * sizeFactor;
+
+
+                    const img = document.createElement('img');
+                    img.id = 'image';
+                    img.style.position = 'absolute';
+                    img.style.left = width + '%';
+                    img.style.top = height + '%';
+                    img.style.zIndex = i.toString();
+                    img.src = item.url;
+                    img.width = Imagewidth;
+                    img.height = Imageheight;
+                    container.appendChild(img);
+                }
+            }
+        }
+        document.body.appendChild(container);
+    }
 }
 
 
