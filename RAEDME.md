@@ -11,8 +11,10 @@ Click the image to watch the video to view all features!
 
 # Setup
 
+In terminal
+
 ```
-terminal: npm i canvas-edit-tools
+npm i canvas-edit-tools
 ```
 
 # Tools
