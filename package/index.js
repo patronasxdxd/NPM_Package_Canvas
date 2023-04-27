@@ -14,8 +14,37 @@ export function initialize() {
     if (canvas){
         ctx = canvas.getContext('2d');
     }
-    const customDialog = document.getElementById('custom-dialog');
-    const customInput = document.getElementById('custom-input');
+
+
+
+    const customDialog = document.createElement("div");
+    customDialog.id = "custom-dialog";
+
+
+    const customInput = document.createElement("textarea");
+    customInput.id = "custom-input";
+    customInput.rows = "5";
+
+
+    const customAcceptBtn = document.createElement("button");
+    customAcceptBtn.id = "custom-accept";
+    customAcceptBtn.textContent = "Accept";
+
+
+    const customCancelBtn = document.createElement("button");
+    customCancelBtn.id = "custom-cancel";
+    customCancelBtn.textContent = "Cancel";
+
+
+    customDialog.appendChild(customInput);
+    customDialog.appendChild(customAcceptBtn);
+    customDialog.appendChild(customCancelBtn);
+
+
+    document.body.appendChild(customDialog);
+
+
+
     const customAccept = document.getElementById('custom-accept');
     const customCancel = document.getElementById('custom-cancel');
     
@@ -673,7 +702,35 @@ export function initialize() {
     
     
     const Init = () => {
-    
+
+// create the div element with id custom-dialog
+        const customDialog = document.createElement("div");
+        customDialog.id = "custom-dialog";
+
+// create the textarea element
+        const customInput = document.createElement("textarea");
+        customInput.id = "custom-input";
+        customInput.rows = "5";
+
+// create the accept button element
+        const customAcceptBtn = document.createElement("button");
+        customAcceptBtn.id = "custom-accept";
+        customAcceptBtn.textContent = "Accept";
+
+// create the cancel button element
+        const customCancelBtn = document.createElement("button");
+        customCancelBtn.id = "custom-cancel";
+        customCancelBtn.textContent = "Cancel";
+
+// add the textarea and buttons to the dialog
+        customDialog.appendChild(customInput);
+        customDialog.appendChild(customAcceptBtn);
+        customDialog.appendChild(customCancelBtn);
+
+// add the dialog to the document body
+        document.body.appendChild(customDialog);
+
+
         if (document.getElementById('editor')) {
             const editorContainer = new Editor("editor");
             document.body.appendChild(editorContainer.getContainer());

@@ -1,6 +1,6 @@
 {
   "name": "canvas-edit-tools",
-  "version": "1.1.7",
+  "version": "1.1.10",
   "description": "tools to create elements for a canvas",
   "main": "index.js",
   "files": [
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "(https://github.com/patronasxdxd/NPM_Package_Canvas.git)"
+    "url": "(https://github.com/patronasxdxd/NPM_Package_Canvas/)"
   },
   "keywords": [
     "CAN"
