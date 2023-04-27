@@ -1,0 +1,32 @@
+body {
+    font-family: "Roboto", Arial, Verdana, sans-serif;
+    background: lightgray;
+}
+
+#box {
+    background-image: linear-gradient(to bottom right, #ffffff, #f2f2f2);
+    display: flex;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25),
+    inset 0px 0px 0px 1px rgba(255, 255, 255, 0.25);
+    word-wrap: break-word;
+    line-break: after-white-space;
+    padding: 10px; /* add more space between the content and the border */
+    border-radius: 8px; /* add rounded corners to the border */
+    border: 2px solid #d9d9d9; /* update the border style */
+    max-width: 40ch;
+}
+
+
+.image  {
+    display: flex;
+    -webkit-user-drag: none; /* Safari */
+    user-drag: none;
+    -khtml-user-drag: none; /* Konqueror HTML */
+    -moz-user-drag: none; /* Old versions of Firefox */
+    -o-user-drag: none; /* Old versions of Opera */
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25),
+    inset 0px 0px 0px 1px rgba(255, 255, 255, 0.25),
+    inset 0px 0px 0px 16px rgba(255, 255, 255, 0.25);
+}

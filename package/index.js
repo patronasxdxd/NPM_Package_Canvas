@@ -1,5 +1,5 @@
 import styles from './style.css';
-
+import templateStyle  from './template.css';
 
 export function initialize() {
 
@@ -39,6 +39,8 @@ export function initialize() {
     let contextMenuActive = false;
     let oldHeight;
     let contextMenu = document.querySelector(".menu");
+
+    let preview = false;
     
     const resetCanvas = () => {
         itemsCanvas = []
@@ -313,7 +315,6 @@ export function initialize() {
 
         localStorage.setItem('itemPositions', JSON.stringify(itemPositions));
 
-        // document.querySelector('body').style.display = 'none';
         showPreview(JSON.stringify(itemPositions));
 
 
@@ -1114,16 +1115,45 @@ export function initialize() {
 
     function showPreview(itemPositions) {
 
+        if (preview === true){
+            location.reload()
+        }
+
         const editor = document.getElementById("editor");
         if (editor){
             editor.style.display = 'none';
         }
 
-
-
         const canvas = document.getElementById("myCanvas");
         if (canvas){
             canvas.style.display = 'none';
+        }
+
+        const toolbar = document.querySelector(".toolbar");
+        const saveBtn = document.querySelector("#saveBtn");
+        const displaySpan = document.querySelector("#display");
+
+
+        if (displaySpan){
+            displaySpan.style.display = "none";
+
+        }
+
+        if (toolbar){
+            // Hide all buttons except for Save
+            toolbar.childNodes.forEach((node) => {
+                if (node.nodeName === "BUTTON" && node !== saveBtn) {
+                    node.style.display = "none";
+                }
+            });
+        }
+
+
+
+// Change Save button text to Go Back
+
+        if (saveBtn){
+            saveBtn.textContent = "Go Back";
         }
 
 
@@ -1245,9 +1275,6 @@ export function initialize() {
 
                 } else {
 
-
-                    console.log(item)
-
                     let width = (item.x / canvasWidth) * 100;
                     let height = (item.y / canvasHeight) * 100;
 
@@ -1269,7 +1296,10 @@ export function initialize() {
                 }
             }
         }
+        preview = true;
         document.body.appendChild(container);
+
+
     }
 }
 
